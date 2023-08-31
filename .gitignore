@@ -2,3 +2,16 @@ workspace.code_workspace
 *.out
 *.pb.*
 .vscode
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.pdf
+*.run.xml
+*.tex.bbl
+*.tex.blg
+*.code_workspace
+*.log
