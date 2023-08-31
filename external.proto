@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package HMQTT;
+
+
+
+message PUBCONNECT {
+    string topic = 1;
+    fixed32 ip = 2;
+    uint32 port = 3;
+}
+
+message PUBACCEPT {
+    string topic = 1;
+}
+
+message PUBLISH {
+    string topic = 1;
+    bytes data = 2;
+}
+
+message PUBACK {
+    string topic = 1;
+    enum AckStatus {
+        SUCCESS = 0;
+        OUTOFJURIS = 1; //the tag was not in the juridiction of the server it was published to
+        FAIL = 2;
+    }
+    AckStatus status = 2;
+}
+
+message SUBSCRIBE {
+    string topic = 1;
+    fixed32 ip = 2;
+    uint32 port = 3;
+}
+
+message JOIN {
+    string topic = 1;
+    fixed32 ip = 2;
+    uint32 port = 3;
+}
+
+message EXTERNALMESSAGE {
+    oneof actualmessage {
+        PUBCONNECT pubConnect = 1;
+        PUBACCEPT pubAccept = 2;
+        PUBLISH publish = 3;
+        PUBACK pubAck = 4;
+        SUBSCRIBE subscribe = 5;
+        JOIN join = 6;
+    }
+}
